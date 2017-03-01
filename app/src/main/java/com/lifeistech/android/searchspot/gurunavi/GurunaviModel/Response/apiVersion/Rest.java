@@ -1,12 +1,12 @@
-package com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.api_version;
+package com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion;
 
 import com.google.gson.annotations.SerializedName;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.api_version.rest.Access;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.api_version.rest.Code;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.api_version.rest.CouponURL;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.api_version.rest.Flags;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.api_version.rest.ImageURL;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.api_version.rest.PR;
+import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.rest.Access;
+import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.rest.Code;
+import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.rest.CouponURL;
+import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.rest.Flags;
+import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.rest.ImageURL;
+import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.rest.PR;
 
 import java.security.Timestamp;
 

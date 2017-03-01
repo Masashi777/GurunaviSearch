@@ -2,25 +2,34 @@ package com.lifeistech.android.searchspot;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.lifeistech.android.searchspot.gurunavi.Gurunavi;
 import com.lifeistech.android.searchspot.gurunavi.GurunaviConnect;
+import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.GurunaviResponse;
+import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.Rest;
 import com.lifeistech.android.searchspot.gurunavi.GurunaviRetrofit;
 
-import retrofit.RetrofitError;
-import retrofit.converter.GsonConverter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView listView;
-    EditText editText;
+    static ListView listView;
+    static CustomAdapter adapter;
+    static ArrayList<Rest> rests = new ArrayList<Rest>();
+    private final String keyId = "9ffa01190536dce72adf62e5fba762be";
+    private final String format = "json";
+
+    static EditText editText;
 
     //コネクタ
     GurunaviConnect connect = new GurunaviRetrofit();
 
-
+    final Gurunavi gurunavi = new Gurunavi();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +41,34 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void serach(View v) {
-        CustomAdapter adapter = new CustomAdapter().Builder()
-                .baseUrl(GurunaviRetrofit.REQUEST_DOMAIN)
-                //.addConverterFactory(GsonConverterFactory.creat())
-                .build();
+    public void search(View v) {
+
+        gurunavi.search(connect, keyId, format, editText.getText().toString(), new GurunaviConnect.GurunaviSearchListener() {
+
+            @Override
+            public void onSuccess(List<Rest> restList) {
+                //とりだす
+                ArrayList<Rest> rests = new ArrayList<>();
+
+                for (Rest d : restList) {
+                    rests.add(d);
+                }
+
+                adapter = new CustomAdapter(getApplicationContext(), R.layout.activity_main, rests);
+                listView.setAdapter(adapter);
+
+                Log.d("TAG", "success!!!!!");
+
+            }
+
+            @Override
+            public void onFailed(String error) {
+                Log.e("TAG", error);
+            }
+
+        });
 
 
-        listView.setAdapter(adapter);
+        //listView.setAdapter(adapter);
     }
 }

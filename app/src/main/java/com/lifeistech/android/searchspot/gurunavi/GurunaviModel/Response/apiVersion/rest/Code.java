@@ -1,6 +1,8 @@
-package com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.api_version.rest;
+package com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.rest;
 
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 /**
  * Created by Masashi Hamaguchi on 2017/02/28.
@@ -16,13 +18,13 @@ public class Code {
     @SerializedName("areaname_s")
     public String areanameS;
 
-    public String category_code_l;
-    public String category_name_l;
-    public String category_code_s;
-    public String category_name_s;
+    public List<String> category_code_l;
+    public List<String> category_name_l;
+    public List<String> category_code_s;
+    public List<String> category_name_s;
 
 
-    public Code(String areacode, String areaname, String prefcode, String prefname, String areacodeS, String areanameS, String category_code_l, String category_name_l, String category_code_s, String category_name_s) {
+    public Code(String areacode, String areaname, String prefcode, String prefname, String areacodeS, String areanameS, List<String> category_code_l, List<String> category_name_l, List<String> category_code_s, List<String> category_name_s) {
         this.areacode = areacode;
         this.areaname = areaname;
         this.prefcode = prefcode;
@@ -84,37 +86,35 @@ public class Code {
         this.areanameS = areanameS;
     }
 
-    public String getCategory_code_l() {
+    public List<String> getCategory_code_l() {
         return category_code_l;
     }
 
-    public void setCategory_code_l(String category_code_l) {
+    public void setCategory_code_l(List<String> category_code_l) {
         this.category_code_l = category_code_l;
     }
 
-    public String getCategory_name_l() {
+    public List<String> getCategory_name_l() {
         return category_name_l;
     }
 
-    public void setCategory_name_l(String category_name_l) {
+    public void setCategory_name_l(List<String> category_name_l) {
         this.category_name_l = category_name_l;
     }
 
-    public String getCategory_code_s() {
+    public List<String> getCategory_code_s() {
         return category_code_s;
     }
 
-    public void setCategory_code_s(String category_code_s) {
+    public void setCategory_code_s(List<String> category_code_s) {
         this.category_code_s = category_code_s;
     }
 
-    public String getCategory_name_s() {
+    public List<String> getCategory_name_s() {
         return category_name_s;
     }
 
-    public void setCategory_name_s(String category_name_s) {
+    public void setCategory_name_s(List<String> category_name_s) {
         this.category_name_s = category_name_s;
     }
-
-
 }

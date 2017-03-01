@@ -7,11 +7,11 @@ import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.ApiVers
  * Created by Masashi Hamaguchi on 2017/02/28.
  */
 
-public class Response {
+public class GurunaviResponse {
     @SerializedName("@api_version")
     public ApiVersion apiVersion;
 
-    public Response(ApiVersion apiVersion) {
+    public GurunaviResponse(ApiVersion apiVersion) {
         this.apiVersion = apiVersion;
     }
 

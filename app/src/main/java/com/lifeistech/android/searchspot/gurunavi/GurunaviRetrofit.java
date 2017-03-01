@@ -1,10 +1,14 @@
 package com.lifeistech.android.searchspot.gurunavi;
 
+import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.GurunaviResponse;
+import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.Rest;
+
 import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
+import retrofit.client.Response;
 import retrofit.http.GET;
 import retrofit.http.Query;
 
@@ -17,27 +21,27 @@ import retrofit.http.Query;
 
 public class GurunaviRetrofit extends GurunaviConnect {
 
-    private final String keyid = "9ffa01190536dce72adf62e5fba762be";
-
     public interface GurunaviApiService {
         @GET("/")
-        public void serach(@Query("KeyId") String keyid,
-                             @Query("freeWord") String freeWord,
-                             Callback<GurunaviJson> callback);
+        public void search(@Query("keyid") String keyId,
+                           @Query("format") String format,
+                           @Query("freeword") String freeWord,
+                           Callback<GurunaviResponse> callback);
 
     }
 
-    public void serach(final String freehWord, Callback<RestResponse> callback) {
+    public void search(final String keyId, final  String format, final String freeWord, final GurunaviSearchListener listener) {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(REQUEST_DOMAIN)
+                .setLogLevel(RestAdapter.LogLevel.FULL)
                 .build();
 
         GurunaviApiService service = restAdapter.create(GurunaviApiService.class);
 
-        service.serach(keyid, freehWord, new Callback<List<GurunaviJson>>() {
+        service.search(keyId, format, freeWord, new Callback<GurunaviResponse>() {
             @Override
-            public void success(List<GurunaviJson> grunaviJson, Callback<GurunaviJson> callback) {
-                listener.onSuccess(GurunaviJson);
+            public void success(GurunaviResponse gurunaviResponse, Response response) {
+                //listener.onSuccess(restList);
             }
 
             @Override
@@ -49,3 +53,4 @@ public class GurunaviRetrofit extends GurunaviConnect {
 
     }
 }
+

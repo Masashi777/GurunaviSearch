@@ -1,4 +1,4 @@
-package com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.api_version.rest.code;
+package com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.rest.code;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -6,11 +6,11 @@ import com.google.gson.annotations.SerializedName;
  * Created by Masashi Hamaguchi on 2017/02/28.
  */
 
-public class CategoryNameL {
+public class CategoryNameS {
     @SerializedName("@order")
     public int order;
 
-    public CategoryNameL(int order) {
+    public CategoryNameS(int order) {
         this.order = order;
     }
 
