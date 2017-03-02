@@ -1,5 +1,9 @@
 package com.lifeistech.android.searchspot.gurunaviAPI;
 
+import android.util.Log;
+
+import com.lifeistech.android.searchspot.googleMapAPI.GoogleMapModel.Response;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.GurunaviResponse;
 import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.Rest;
 
 import java.io.Serializable;
@@ -16,7 +20,7 @@ public abstract class GurunaviConnect implements Serializable {
 
     public interface GurunaviSearchListener {
 
-        public void onSuccess(List<Rest> restList);
+        public void onSuccess(GurunaviResponse gurunaviResponse);
 
         public void onFailed(String error);
 

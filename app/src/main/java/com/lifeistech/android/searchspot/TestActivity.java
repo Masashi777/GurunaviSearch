@@ -1,11 +1,14 @@
 package com.lifeistech.android.searchspot;
 
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lifeistech.android.searchspot.gurunaviAPI.Gurunavi;
 import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviConnect;
@@ -24,32 +27,22 @@ import retrofit.Retrofit;
 
 import static com.lifeistech.android.searchspot.gurunaviAPI.GurunaviConnect.REQUEST_DOMAIN;
 
-public class MainActivity extends AppCompatActivity {
+public class TestActivity extends AppCompatActivity {
 
-    static ListView listView;
-    static CustomAdapter adapter;
-    static ArrayList<Rest> rests = new ArrayList<Rest>();
     private final String keyId = "9ffa01190536dce72adf62e5fba762be";
     private final String format = "json";
 
     static EditText editText;
-
-    //コネクタ
-    GurunaviConnect connect = new GurunaviRetrofit();
-
-    final Gurunavi gurunavi = new Gurunavi();
+    static TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_test);
 
-        listView = (ListView)findViewById(R.id.listView);
         editText = (EditText)findViewById(R.id.editText);
+        textView = (TextView)findViewById(R.id.textView);
 
-    }
-
-    public void search(View v) {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(REQUEST_DOMAIN)
@@ -58,13 +51,20 @@ public class MainActivity extends AppCompatActivity {
 
         GurunaviRetrofit.GurunaviApiService service = retrofit.create(GurunaviRetrofit.GurunaviApiService.class);
 
-        Call<GurunaviResponse> call = service.search(keyId, format, editText.getText().toString());
-        Log.d("TAG", "RETROFIT");
+        Call<GurunaviResponse> call = service.search(keyId, format, "東京");
         call.enqueue(new Callback<GurunaviResponse>() {
             @Override
             public void onResponse(Response<GurunaviResponse> response, Retrofit retrofit) {
                 Log.d("TAG", "GurunaviRetrofit_Response");
                 //listener.onSuccess(gurunaviResponse);
+
+                List<Rest> restList = response.body().getApiVersion().getRestList();
+                StringBuilder builder = new StringBuilder();
+
+                for (Rest rest : restList) {
+                    builder.append(rest.getName() + "\n");
+                }
+                textView.setText(new String(builder));
             }
 
             @Override
@@ -75,19 +75,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+//    public void search(View v) {
+//
+//
 //        gurunavi.search(connect, keyId, format, editText.getText().toString(), new GurunaviConnect.GurunaviSearchListener() {
 //
 //            @Override
-//            public void onSuccess(GurunaviResponse gurunaviResponse) {
+//            public void onSuccess(List<Rest> restList) {
 //                //とりだす
-////                ArrayList<Rest> rests = new ArrayList<>();
-////
-////                for (Rest d : restList) {
-////                    rests.add(d);
-////                }
-////
-////                adapter = new CustomAdapter(getApplicationContext(), R.layout.activity_main, rests);
-////                listView.setAdapter(adapter);
+//                ArrayList<Rest> rests = new ArrayList<>();
+//
+//                for (Rest d : restList) {
+//                    rests.add(d);
+//                }
+//
+//                adapter = new CustomAdapter(getApplicationContext(), R.layout.activity_main, rests);
+//                listView.setAdapter(adapter);
 //
 //                Log.d("TAG", "success!!!!!");
 //
@@ -99,8 +104,8 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //
 //        });
-
-
-        //listView.setAdapter(adapter);
-    }
+//
+//
+//        //listView.setAdapter(adapter);
+//    }
 }
