@@ -1,12 +1,9 @@
-package com.lifeistech.android.searchspot.gurunavi;
+package com.lifeistech.android.searchspot.gurunaviAPI;
 
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.GurunaviResponse;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.Rest;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.Rest;
 
 import java.io.Serializable;
 import java.util.List;
-
-import retrofit.Callback;
 
 /**
  * Created by Masashi Hamaguchi on 2017/02/21.

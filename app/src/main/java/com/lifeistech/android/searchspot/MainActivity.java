@@ -7,11 +7,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.lifeistech.android.searchspot.gurunavi.Gurunavi;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviConnect;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.GurunaviResponse;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.Rest;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviRetrofit;
+import com.lifeistech.android.searchspot.gurunaviAPI.Gurunavi;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviConnect;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.Rest;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviRetrofit;
 
 import java.util.ArrayList;
 import java.util.List;

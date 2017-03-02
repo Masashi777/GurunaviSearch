@@ -1,7 +1,7 @@
-package com.lifeistech.android.searchspot.gurunavi.GurunaviModel;
+package com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel;
 
 import com.google.gson.annotations.SerializedName;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.ApiVersion;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.ApiVersion;
 
 /**
  * Created by Masashi Hamaguchi on 2017/02/28.
