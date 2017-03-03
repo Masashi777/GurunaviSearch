@@ -4,7 +4,7 @@
 //
 //import com.google.android.gms.maps.model.LatLng;
 //import com.lifeistech.android.searchspot.R;
-//import com.lifeistech.android.searchspot.googleMapAPI.GoogleMapModel.Response;
+//import com.lifeistech.android.searchspot.googleMapAPI.GoogleMapModel.GurunaviData;
 //
 //import retrofit.Call;
 //import retrofit.Callback;
@@ -19,13 +19,15 @@
 //    private static final String TAG = PlacesApiHelper.class.getSimpleName();
 //    private final PlacesApiHelper self = this;
 //
+//    private static final String key = "";
+//
 //    private Context mContext;
 //
 //    public void PlacesApiHelper(Context context) {
 //        mContext = context;
 //    }
 //
-//    public void requestPlaces(String types, LatLng latLng, int radius, Callback<Response> callback) {
+//    public void requestPlaces(String types, LatLng latLng, Callback<GurunaviData> callback) {
 //        Retrofit retrofit = new Retrofit.Builder()
 //                .baseUrl(mContext.getString(R.string.places_api_url))
 //                .addConverterFactory(GsonConverterFactory.create())
@@ -33,11 +35,8 @@
 //
 //        PlaceApiService service = retrofit.create(PlaceApiService.class);
 //
-//        Call<Response> call = service.requestPlaces(types,
-//                String.valueOf(latLng.latitude) + "," + String.valueOf(latLng.longitude),
-//                String.valueOf(radius),
-//                "false",
-//                mContext.getString(R.string.google_maps_key_browser));
+//        Call<GurunaviData> call = service.requestPlaces(types,
+//                String.valueOf(latLng.latitude) + "," + String.valueOf(latLng.longitude), key);
 //        call.enqueue(callback);
 //    }
 //

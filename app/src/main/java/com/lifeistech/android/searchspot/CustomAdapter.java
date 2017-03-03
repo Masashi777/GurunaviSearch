@@ -1,6 +1,7 @@
 package com.lifeistech.android.searchspot;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.Rest;
+import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.gurunaviData.response.Rest;
 
 import java.util.ArrayList;
 
@@ -50,12 +51,15 @@ public class CustomAdapter extends ArrayAdapter<Rest> {
             viewHolder.name.setTextColor(Color.BLACK);
             viewHolder.address = (TextView) convertView.findViewById(R.id.addressText);
             viewHolder.address.setTextColor(Color.BLACK);
+            viewHolder.id = (TextView)  convertView.findViewById(R.id.idText);
+            viewHolder.id.setTextColor(Color.BLACK);
 
             convertView.setTag(viewHolder);
         }
 
         viewHolder.name.setText(item.getName());
         viewHolder.address.setText(item.getAddress());
+        viewHolder.id.setText(item.getId());
 
         return convertView;
 
@@ -66,6 +70,7 @@ public class CustomAdapter extends ArrayAdapter<Rest> {
     static class ViewHolder {
         TextView name;
         TextView address;
+        TextView id;
     }
 
 }

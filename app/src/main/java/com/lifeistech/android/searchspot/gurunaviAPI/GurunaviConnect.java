@@ -1,13 +1,8 @@
 package com.lifeistech.android.searchspot.gurunaviAPI;
 
-import android.util.Log;
-
-import com.lifeistech.android.searchspot.googleMapAPI.GoogleMapModel.Response;
-import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.GurunaviResponse;
-import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.Rest;
+import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.GurunaviData;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by Masashi Hamaguchi on 2017/02/21.
@@ -20,7 +15,7 @@ public abstract class GurunaviConnect implements Serializable {
 
     public interface GurunaviSearchListener {
 
-        public void onSuccess(GurunaviResponse gurunaviResponse);
+        public void onSuccess(GurunaviData gurunaviData);
 
         public void onFailed(String error);
 

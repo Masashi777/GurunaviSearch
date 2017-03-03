@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ResultActivity" />
-        <activity android:name=".TestActivity" >
+        <activity android:name=".hotpepperAPI.HotPepperActivity" >
 
         </activity>
 
@@ -34,7 +34,6 @@
             android:name="com.google.android.maps.V2.API_KEY"
             android:value="AIzaSyBQf2azP0CpyIJV5Q3NrKx1e_Z4Qst1Em0" />
 
-        <activity android:name=".TestActivity"></activity>
     </application>
 
 </manifest>

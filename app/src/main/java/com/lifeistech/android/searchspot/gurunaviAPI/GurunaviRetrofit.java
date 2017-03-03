@@ -2,21 +2,15 @@ package com.lifeistech.android.searchspot.gurunaviAPI;
 
 import android.util.Log;
 
-import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.GurunaviResponse;
-import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.Rest;
-import com.squareup.okhttp.OkHttpClient;
+import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.GurunaviData;
 
-import java.io.IOException;
-import java.util.List;
-
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Response;
-import retrofit.Retrofit;
-import retrofit.http.GET;
-import retrofit.http.Query;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.GsonConverterFactory;
+import retrofit2.Retrofit;
+import retrofit2.Response;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 
 
@@ -27,45 +21,38 @@ import retrofit.http.Query;
 
 public class GurunaviRetrofit extends GurunaviConnect {
 
-    List<Rest> restList;
-
     public interface GurunaviApiService {
         @GET("/")
-        Call<GurunaviResponse> search(@Query("keyid") String keyId,
-                                      @Query("format") String format,
-                                      @Query("freeword") String freeWord);
+        Call<GurunaviData> search(@Query("keyid") String keyId,
+                                  @Query("format") String format,
+                                  @Query("freeword") String freeWord);
 
     }
 
     public void search(final String keyId, final  String format, final String freeWord, final GurunaviSearchListener listener) {
 
-//        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-//        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-//
-//        OkHttpClient okHttpclient = new OkHttpClient.Builder()
-//                .addInterceptor(loggingInterceptor)
-//                .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(REQUEST_DOMAIN)
-//                .client(okHttpclient)
+                .baseUrl("https://api.gnavi.co.jp/RestSearchAPI/20150630")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         GurunaviApiService service = retrofit.create(GurunaviApiService.class);
 
-        Call<GurunaviResponse> call = service.search(keyId, format, freeWord);
-        Log.d("TAG", "RETROFIT");
-        call.enqueue(new Callback<GurunaviResponse>() {
+        Call<GurunaviData> call = service.search(keyId, format, freeWord);
+
+        Log.d("TAG", "RETROFIT" + service.toString());
+
+        call.enqueue(new Callback<GurunaviData>() {
             @Override
-            public void onResponse(Response<GurunaviResponse> response, Retrofit retrofit) {
-                Log.d("TAG", "GurunaviRetrofit_Response");
-                //listener.onSuccess(gurunaviResponse);
+            public void onResponse(Response<GurunaviData> response) {
+                Log.d("TAG", "GurunaviRetrofit_onResponse");
+                listener.onSuccess(response.body());
             }
 
             @Override
             public void onFailure(Throwable t) {
-                Log.e("TAG", "GurunaviRetrofit.Error");
+                Log.e("TAG", t.getMessage());
                 listener.onFailed(t.toString());
 
             }
