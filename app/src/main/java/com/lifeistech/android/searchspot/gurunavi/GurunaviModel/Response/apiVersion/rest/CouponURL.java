@@ -9,6 +9,7 @@ public class CouponURL {
     public String mobile;
 
     public CouponURL(String pc, String mobile) {
+
         this.pc = pc;
         this.mobile = mobile;
     }

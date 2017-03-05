@@ -14,15 +14,14 @@ public class Access {
     public String walk;
     public String note;
 
-
     public Access(String line, String station, String stationExit, String walk, String note) {
+
         this.line = line;
         this.station = station;
         this.stationExit = stationExit;
         this.walk = walk;
         this.note = note;
     }
-
 
     public String getLine() {
         return line;
@@ -63,6 +62,4 @@ public class Access {
     public void setNote(String note) {
         this.note = note;
     }
-
-
 }

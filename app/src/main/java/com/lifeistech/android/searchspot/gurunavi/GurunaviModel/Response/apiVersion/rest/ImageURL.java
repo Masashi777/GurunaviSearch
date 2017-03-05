@@ -13,13 +13,11 @@ public class ImageURL {
     public String shopImage2;
     public String qrcode;
 
-
     public ImageURL(String shopImage1, String shopImage2, String qrcode) {
         this.shopImage1 = shopImage1;
         this.shopImage2 = shopImage2;
         this.qrcode = qrcode;
     }
-
 
     public String getShopImage1() {
         return shopImage1;
