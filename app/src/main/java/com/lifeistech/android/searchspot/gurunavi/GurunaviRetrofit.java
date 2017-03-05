@@ -1,9 +1,10 @@
 package com.lifeistech.android.searchspot.gurunavi;
 
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.GurunaviResponse;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.Rest;
+import android.util.Log;
 
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -11,7 +12,6 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import retrofit.http.GET;
 import retrofit.http.Query;
-
 
 
 /**
@@ -26,7 +26,7 @@ public class GurunaviRetrofit extends GurunaviConnect {
         public void search(@Query("keyid") String keyId,
                            @Query("format") String format,
                            @Query("freeword") String freeWord,
-                           Callback<GurunaviResponse> callback);
+                           Callback<Response> callback);
 
     }
 
@@ -38,17 +38,41 @@ public class GurunaviRetrofit extends GurunaviConnect {
 
         GurunaviApiService service = restAdapter.create(GurunaviApiService.class);
 
-        service.search(keyId, format, freeWord, new Callback<GurunaviResponse>() {
+        service.search(keyId, format, freeWord, new Callback<Response>() {
             @Override
-            public void success(GurunaviResponse gurunaviResponse, Response response) {
-                //listener.onSuccess(restList);
+            public void success(Response gurunaviResponse, Response response) {
+
+
+
+                // 結果のJsonからString型のresultを作成
+                BufferedReader reader = null;
+                StringBuilder sb = new StringBuilder();
+                try {
+                    reader = new BufferedReader(
+                            new InputStreamReader(response.getBody().in()));
+                    String line;
+                    try {
+                        while ((line = reader.readLine()) != null) {
+                            sb.append(line);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                String result = sb.toString();
+
+                // 結果のJsonをString型にしてGurunaviSearchListenerのonSuccessに渡す。
+                listener.onSuccess(result);
+                Log.d("TAG", "success!!!!!");
             }
 
             @Override
             public void failure(RetrofitError error) {
-                listener.onFailed(error.toString());
+                Log.d("TAG", "failed!!!!!");
+                Log.d("TAG", error.toString());
             }
-
         });
 
     }

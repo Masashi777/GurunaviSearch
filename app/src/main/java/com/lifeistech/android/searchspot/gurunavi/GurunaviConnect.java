@@ -1,12 +1,6 @@
 package com.lifeistech.android.searchspot.gurunavi;
 
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.GurunaviResponse;
-import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.Rest;
-
 import java.io.Serializable;
-import java.util.List;
-
-import retrofit.Callback;
 
 /**
  * Created by Masashi Hamaguchi on 2017/02/21.
@@ -19,7 +13,7 @@ public abstract class GurunaviConnect implements Serializable {
 
     public interface GurunaviSearchListener {
 
-        public void onSuccess(List<Rest> restList);
+        public void onSuccess(String result);
 
         public void onFailed(String error);
 

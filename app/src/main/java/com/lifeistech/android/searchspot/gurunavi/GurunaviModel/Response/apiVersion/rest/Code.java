@@ -18,13 +18,14 @@ public class Code {
     @SerializedName("areaname_s")
     public String areanameS;
 
-    public List<String> category_code_l;
-    public List<String> category_name_l;
-    public List<String> category_code_s;
-    public List<String> category_name_s;
+    public List<Object> category_code_l;
+    public List<Object> category_name_l;
+    public List<Object> category_code_s;
+    public List<Object> category_name_s;
 
 
-    public Code(String areacode, String areaname, String prefcode, String prefname, String areacodeS, String areanameS, List<String> category_code_l, List<String> category_name_l, List<String> category_code_s, List<String> category_name_s) {
+    public Code(List<Object> category_name_s, String areacode, String areaname, String prefcode, String prefname, String areacodeS, String areanameS, List<Object> category_code_l, List<Object> category_name_l, List<Object> category_code_s) {
+        this.category_name_s = category_name_s;
         this.areacode = areacode;
         this.areaname = areaname;
         this.prefcode = prefcode;
@@ -34,9 +35,7 @@ public class Code {
         this.category_code_l = category_code_l;
         this.category_name_l = category_name_l;
         this.category_code_s = category_code_s;
-        this.category_name_s = category_name_s;
     }
-
 
     public String getAreacode() {
         return areacode;
@@ -86,35 +85,35 @@ public class Code {
         this.areanameS = areanameS;
     }
 
-    public List<String> getCategory_code_l() {
+    public List<Object> getCategory_code_l() {
         return category_code_l;
     }
 
-    public void setCategory_code_l(List<String> category_code_l) {
+    public void setCategory_code_l(List<Object> category_code_l) {
         this.category_code_l = category_code_l;
     }
 
-    public List<String> getCategory_name_l() {
+    public List<Object> getCategory_name_l() {
         return category_name_l;
     }
 
-    public void setCategory_name_l(List<String> category_name_l) {
+    public void setCategory_name_l(List<Object> category_name_l) {
         this.category_name_l = category_name_l;
     }
 
-    public List<String> getCategory_code_s() {
+    public List<Object> getCategory_code_s() {
         return category_code_s;
     }
 
-    public void setCategory_code_s(List<String> category_code_s) {
+    public void setCategory_code_s(List<Object> category_code_s) {
         this.category_code_s = category_code_s;
     }
 
-    public List<String> getCategory_name_s() {
+    public List<Object> getCategory_name_s() {
         return category_name_s;
     }
 
-    public void setCategory_name_s(List<String> category_name_s) {
+    public void setCategory_name_s(List<Object> category_name_s) {
         this.category_name_s = category_name_s;
     }
 }

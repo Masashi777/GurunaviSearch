@@ -1,7 +1,5 @@
 package com.lifeistech.android.searchspot.gurunavi;
 
-import retrofit.Callback;
-
 /**
  * Created by Masashi Hamaguchi on 2017/02/28.
  */
