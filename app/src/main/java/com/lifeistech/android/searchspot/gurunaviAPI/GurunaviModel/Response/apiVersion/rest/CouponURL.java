@@ -1,4 +1,4 @@
-package com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.gurunaviData.response.rest;
+package com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.rest;
 
 /**
  * Created by Masashi Hamaguchi on 2017/02/28.
@@ -9,6 +9,7 @@ public class CouponURL {
     public String mobile;
 
     public CouponURL(String pc, String mobile) {
+
         this.pc = pc;
         this.mobile = mobile;
     }

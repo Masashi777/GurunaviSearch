@@ -1,15 +1,12 @@
-package com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.gurunaviData.response;
+package com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion;
 
 import com.google.gson.annotations.SerializedName;
-import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.gurunaviData.response.rest.Access;
-import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.gurunaviData.response.rest.Code;
-import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.gurunaviData.response.rest.CouponURL;
-import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.gurunaviData.response.rest.Flags;
-import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.gurunaviData.response.rest.ImageURL;
-import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.gurunaviData.response.rest.Order;
-import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.gurunaviData.response.rest.PR;
-
-import java.security.Timestamp;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.rest.Access;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.rest.Code;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.rest.CouponURL;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.rest.Flags;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.rest.ImageURL;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.rest.PR;
 
 /**
  * Created by Masashi Hamaguchi on 2017/02/28.
@@ -18,16 +15,16 @@ import java.security.Timestamp;
 public class Rest {
 
     @SerializedName("@attributes")
-    public Order order;
+    public Order attributes;
     public String id;
     @SerializedName("update_date")
-    public Timestamp updateDate;
+    public String updateDate;
     public String name;
     @SerializedName("name_kana")
     public String nameKana;
-    public int latitude;
+    public Double latitude;
 
-    public int longitude;
+    public Double longitude;
     public String category;
     public String url;
     @SerializedName("url_mobile")
@@ -47,12 +44,12 @@ public class Rest {
     public String holiday;
     public Access access;
     @SerializedName("parking_lots")
-    public int parkingLots;
+    public String parkingLots;
     public PR pr;
 
     public Code code;
     public int budget;
-    public int party;
+    public String party;
     public int lunch;
     @SerializedName("credit_card")
     public String creditCard;
@@ -61,9 +58,8 @@ public class Rest {
     public String eMoney;
     public Flags flags;
 
-
-    public Rest(Order order, String id, Timestamp updateDate, String name, String nameKana, int latitude, int longitude, String category, String url, String urlMobile, CouponURL couponURL, ImageURL imageURL, String address, String tel, String telSub, String fax, String opentime, String holiday, Access access, int parkingLots, PR pr, Code code, int budget, int party, int lunch, String creditCard, String eMoney, Flags flags) {
-        this.order = order;
+    public Rest(Order attributes, String id, String updateDate, String name, String nameKana, Double latitude, Double longitude, String category, String url, String urlMobile, CouponURL couponURL, ImageURL imageURL, String address, String tel, String telSub, String fax, String opentime, String holiday, Access access, String parkingLots, PR pr, Code code, int budget, String party, int lunch, String creditCard, String eMoney, Flags flags) {
+        this.attributes = attributes;
         this.id = id;
         this.updateDate = updateDate;
         this.name = name;
@@ -93,13 +89,12 @@ public class Rest {
         this.flags = flags;
     }
 
-
-    public Order getOrder() {
-        return order;
+    public Order getAttributes() {
+        return attributes;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setAttributes(Order attributes) {
+        this.attributes = attributes;
     }
 
     public String getId() {
@@ -110,11 +105,11 @@ public class Rest {
         this.id = id;
     }
 
-    public Timestamp getUpdateDate() {
+    public String getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Timestamp updateDate) {
+    public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
     }
 
@@ -134,19 +129,19 @@ public class Rest {
         this.nameKana = nameKana;
     }
 
-    public int getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(int latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public int getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(int longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
@@ -246,11 +241,11 @@ public class Rest {
         this.access = access;
     }
 
-    public int getParkingLots() {
+    public String getParkingLots() {
         return parkingLots;
     }
 
-    public void setParkingLots(int parkingLots) {
+    public void setParkingLots(String parkingLots) {
         this.parkingLots = parkingLots;
     }
 
@@ -278,11 +273,11 @@ public class Rest {
         this.budget = budget;
     }
 
-    public int getParty() {
+    public String getParty() {
         return party;
     }
 
-    public void setParty(int party) {
+    public void setParty(String party) {
         this.party = party;
     }
 
@@ -318,3 +313,4 @@ public class Rest {
         this.flags = flags;
     }
 }
+

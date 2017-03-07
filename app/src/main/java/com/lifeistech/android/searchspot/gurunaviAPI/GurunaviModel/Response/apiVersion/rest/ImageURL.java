@@ -1,4 +1,4 @@
-package com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.gurunaviData.response.rest;
+package com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response.apiVersion.rest;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -13,13 +13,11 @@ public class ImageURL {
     public String shopImage2;
     public String qrcode;
 
-
     public ImageURL(String shopImage1, String shopImage2, String qrcode) {
         this.shopImage1 = shopImage1;
         this.shopImage2 = shopImage2;
         this.qrcode = qrcode;
     }
-
 
     public String getShopImage1() {
         return shopImage1;

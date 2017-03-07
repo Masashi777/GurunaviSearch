@@ -7,13 +7,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.lifeistech.android.searchspot.gurunaviAPI.Gurunavi;
 import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviConnect;
-import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.GurunaviData;
-import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.gurunaviData.response.Rest;
+import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.GurunaviResponse;
+import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.Response.apiVersion.Rest;
 import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviRetrofit;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,14 +48,29 @@ public class MainActivity extends AppCompatActivity {
         gurunavi.search(connect, keyId, format, editText.getText().toString(), new GurunaviConnect.GurunaviSearchListener() {
 
             @Override
-            public void onSuccess(GurunaviData gurunaviData) {
+            public void onSuccess(String result) {
+
+                //json中の{}を""に変換
+                String regex = "\\{\\}";
+                Pattern p = Pattern.compile(regex);
+                Matcher m = p.matcher(result);
+                String json = m.replaceAll("\"\"");
+
+
+
+                // String(中身はjson形式)から GurunaviResponse型への変換
+                Gson gson = new Gson();
+                GurunaviResponse gurunaviResponse = gson.fromJson(json, GurunaviResponse.class);
+
+                Log.d("TAG", gurunaviResponse.getRestList().get(0).getAddress());
+                Log.d("TAG", "success!!!!!");
+
+
+
                 //とりだす
                 ArrayList<Rest> rests = new ArrayList<>();
 
-                for (Rest r: gurunaviData.getResponse().getRest()) {
-                    rests.add(r);
-                }
-
+                rests.addAll(gurunaviResponse.getRestList());
                 adapter = new CustomAdapter(getApplicationContext(), R.layout.activity_main, rests);
                 listView.setAdapter(adapter);
 

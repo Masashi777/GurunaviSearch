@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.gurunaviData.response.Rest;
+
+import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.Response.apiVersion.Rest;
 
 import java.util.ArrayList;
 
