@@ -1,4 +1,4 @@
-package com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response;
+package com.lifeistech.android.searchspot.gurunaviAPI.GurunaviModel.Response;
 
 import com.google.gson.annotations.SerializedName;
 

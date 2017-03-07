@@ -1,5 +1,10 @@
-package com.lifeistech.android.searchspot.gurunavi;
+package com.lifeistech.android.searchspot.gurunaviAPI;
 
+<<<<<<< HEAD:app/src/main/java/com/lifeistech/android/searchspot/gurunavi/GurunaviConnect.java
+=======
+import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.GurunaviResponse;
+
+>>>>>>> second_copy:app/src/main/java/com/lifeistech/android/searchspot/gurunaviAPI/GurunaviConnect.java
 import java.io.Serializable;
 
 /**

@@ -8,11 +8,19 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
+<<<<<<< HEAD
 import com.lifeistech.android.searchspot.gurunavi.Gurunavi;
 import com.lifeistech.android.searchspot.gurunavi.GurunaviConnect;
 import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.GurunaviResponse;
 import com.lifeistech.android.searchspot.gurunavi.GurunaviModel.Response.apiVersion.Rest;
 import com.lifeistech.android.searchspot.gurunavi.GurunaviRetrofit;
+=======
+import com.lifeistech.android.searchspot.gurunaviAPI.Gurunavi;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviConnect;
+import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.GurunaviResponse;
+import com.lifeistech.android.searchspot.gurunaviAPI.gurunaviModel.Response.apiVersion.Rest;
+import com.lifeistech.android.searchspot.gurunaviAPI.GurunaviRetrofit;
+>>>>>>> second_copy
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -22,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     static ListView listView;
     static CustomAdapter adapter;
-    static ArrayList<Rest> rests = new ArrayList<Rest>();
+    //static ArrayList<Rest> rests = new ArrayList<Rest>();
     private final String keyId = "9ffa01190536dce72adf62e5fba762be";
     private final String format = "json";
     private final String freeword = "喫茶";
@@ -53,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(String result) {
+<<<<<<< HEAD
 
 
                 //json中の{}を""に変換
@@ -60,6 +69,32 @@ public class MainActivity extends AppCompatActivity {
                 Pattern p = Pattern.compile(regex);
                 Matcher m = p.matcher(result);
                 String json = m.replaceAll("\"\"");
+=======
+
+                //json中の{}を""に変換
+                String regex = "\\{\\}";
+                Pattern p = Pattern.compile(regex);
+                Matcher m = p.matcher(result);
+                String json = m.replaceAll("\"\"");
+
+
+
+                // String(中身はjson形式)から GurunaviResponse型への変換
+                Gson gson = new Gson();
+                GurunaviResponse gurunaviResponse = gson.fromJson(json, GurunaviResponse.class);
+
+                Log.d("TAG", gurunaviResponse.getRestList().get(0).getAddress());
+                Log.d("TAG", "success!!!!!");
+
+
+
+                //とりだす
+                ArrayList<Rest> rests = new ArrayList<>();
+
+                rests.addAll(gurunaviResponse.getRestList());
+                adapter = new CustomAdapter(getApplicationContext(), R.layout.activity_main, rests);
+                listView.setAdapter(adapter);
+>>>>>>> second_copy
 
 
 
@@ -90,7 +125,5 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-
-        //listView.setAdapter(adapter);
     }
 }
